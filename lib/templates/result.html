@@ -1,0 +1,138 @@
+<div class="container card card-title">
+		<div class="col-lg-12 text-center"><Strong><h4>Weather Pro</h4></Strong></div>
+	</div>
+	<div class="container container-fluid" ng-controller="search">
+		<div class="row">
+			<div class="col-lg-3 col-sm-12">
+				<div class="card">
+					<h4>Search</h4>
+					<form role="search" class="search-field" ng-submit="search()">
+						<div class="input-group">
+							<input type="text" class="form-control" id="city-name" ng-model="name" placeholder="City / Pincode" required>
+							<span class="input-group-btn">
+								<button class="btn btn-primary"  type="submit"><span class="glyphicon glyphicon-search"></span></button>
+							</span>
+						</div>
+					</form>
+					<div class="search-result">
+						<hr>
+						<h5>City: <strong>{{daily.name}}</strong></h5>
+						<h5>Country:<strong>{{daily.sys.country}} </strong></h5>
+					</div>
+				</div>
+				<br>
+				<div class="card">
+					<h4 class="text-center">Change unit</h4><hr>
+					<div class="container">
+						<div class="col-lg-6">
+						<label class="radio-inline text-center">
+							<input class="" type="radio" name="unit_select" ng-model="unit_selector" value="1">&deg;Celcius
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="unit_select" ng-model="unit_selector" value="2">&deg;Farenheit
+						</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br class="hidden-lg">
+			<div class="col-lg-9 col-sm-12">
+				<div class="col-lg-12">
+					<div class="container card" ng-controller="tabs">
+							<section>
+							<div class="col-lg-12">
+								<ul class="nav nav-tabs">
+									<li role="presentation" ng-class="{active:isSet(1)}"><a href=""  ng-click="setTab(1)">Basic</a></li>
+									<li role="presentation" ng-class="{active:isSet(2)}"><a href="" ng-click="setTab(2)">Map</a></li>
+									<li role="presentation" ng-class="{active:isSet(3)}"><a href="" ng-click="setTab(3)">Forecast</a></li>
+								</ul>
+							</div>
+							</section>
+							<section ng-show="isSet(1)"  class="basic-detail">
+								<div class="col-lg-12"><h4 class="text-center">Temperature</h4></div>
+								<div class="col-lg-4 col-lg-offset-4">
+									<div class="col-lg-7"><h1 class="text-center">{{ daily.main.temp | temp:unit_selector}}</h1></div>
+									<div class="col-lg-5">
+										<div class="col-lg-12"><img class="img-responsive center-block" ng-src="http://openweathermap.org/img/w/{{daily.weather[0].icon}}.png"></div>
+									<div class="col-lg-12"><h4 class="text-center">{{daily.weather[0].main | uppercase}}</h4></div>
+									</div>
+								</div>
+								<div class="col-lg-12"><hr></div>
+								<div class="col-lg-12">
+									<div class="col-lg-6">
+										<h4 class="text-center">Humidity</h4>
+										<h2 class="text-center">{{daily.main.humidity}}%</h2>
+									</div>
+									<div class="col-lg-6">
+										<h4 class="text-center">Pressure</h4>
+										<h2 class="text-center">{{daily.main.pressure}} mb</h2>
+									</div>
+								</div>
+								<div class="col-lg-12"><hr></div>
+								<div class="col-lg-12">
+									<h4 class="text-center">Winds</h4>
+									<h2 class="text-center">{{daily.wind.speed}} m/sec at {{daily.wind.deg}}&deg;</h2>
+								</div>
+								<div class="col-lg-12"><hr></div>
+								<!-- <div class="col-lg-12"><h4>Sunrise & sunset</h4></div>
+								<div class="col-lg-12"><hr></div>
+								<div class="col-lg-12">
+									<div class="col-lg-2 col-sm-2">
+										<img src="lib/img/sunrise.png" class="img-responsive" alt="">
+										<h4 class="text-center">{{sunrise | date:'HH:mm'}}</h4>
+									</div>
+									<div class="col-lg-8 col-sm-8">
+										<div class="progress">
+		  									<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{percentsun}}%">
+		    									<span class="sr-only">40% Complete (success)</span>
+		  									</div>
+										</div>
+										<h4 class="text-center">Time :{{date | date:'medium'}} </h4>
+									</div>
+									<div class="col-lg-2 col-sm-2">
+										<img src="lib/img/sunset.png" class="img-responsive" alt="">
+										<h4 class="text-center">{{sunset | date:'HH:mm'}}</h4>
+									</div>
+								</div> -->
+							</section>
+							<section  ng-show="isSet(2)" class="map-details">
+								<div class="col-lg-12">
+									<h4>Location</h4>
+								</div>
+								<div class="col-lg-12">
+									<div id="map">
+										coming soon!
+									</div>
+								</div>
+							</section>
+							<section ng-show="isSet(3)" class="detailed-details" >
+								<div class="col-lg-12">
+									<br><p>Lists the forecast for the next 7 days</p><br>
+								</div>
+								<div class="col-lg-12">
+								<table class="table table-hover table-condensed table-responsive">
+									<thead>
+										<th>Date</th>
+										<th class="text-center">Temperature</th>
+										<th>Forecast</th>
+									</thead>
+									<tbody>
+										<tr ng-repeat="detail in forecast.list">
+											<td><h5><strong>{{detail.dt*1000 | date:'MMM-dd'}}</strong></h5></td>
+											<td class="center-block">
+												<div class="col-lg-3"><img ng-src="http://openweathermap.org/img/w/{{detail.weather[0].icon}}.png" class="img-responsive"></div>
+												<div class="col-lg-5"><h5><strong>{{detail.temp.day | temp:unit_selector}} / {{detail.temp.min | temp:unit_selector}}</strong></h5><span class="badge">{{detail.weather[0].main}}</span></div>
+											</td>
+											<td><h5>{{detail.weather[0].description | uppercase}}</h5><a href="#">More <span class="glyphicon glyphicon-share-alt"></span></a></td>
+										</tr>
+									</tbody>
+								</table>
+								</div>
+							</section>
+					</div><br>
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>

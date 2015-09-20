@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="weather" class="fulls">
+<head>
+	<title>Weather pro</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="lib/angular/angular.min.js"></script>
+	<script type="text/javascript" src="lib/angular/angular-route.min.js"></script>
+	<script type="text/javascript" src="lib/angular/app_revised.js"></script>
+	<script type="text/javascript" src="lib/angular/route.js"></script>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+<style type="text/css">
+	
+	.full{
+		background: url('lib/img/b.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+	}
+	.card{
+		box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+		width: 100%;
+		background: #fff;
+		border-radius: 2px;
+		height: 100%;
+		padding: 10px;
+	}
+	.card-title{
+		padding: 10px;
+		margin-bottom:20px; 
+	}
+	.cover-shade{
+		height: 100%;
+		width: 100%;
+		z-index: 100;
+		background-size: cover;	
+		background: rgba(0,0,0,0.5);
+	}
+	.search-box{
+		z-index: 25;
+		color: #fff;
+	}
+	
+	.s	{
+		margin-top: 10%;/*
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(125, 126, 125, 0.21)), color-stop(100%,rgba(14, 14, 14, 0.55)));*/
+		color: #000;
+	}
+	.wh{
+		color: #fff;
+	}
+</style>
+</head>
+<body class="full">
+	<div ng-view></div>
+
+</body>
+</html>
