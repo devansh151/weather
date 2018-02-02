@@ -8,6 +8,21 @@
 	<script type="text/javascript" src="lib/angular/angular-route.min.js"></script>
 	<script type="text/javascript" src="lib/angular/app_revised.js"></script>
 	<script type="text/javascript" src="lib/angular/route.js"></script>
+		<script>
+		(function (window, document, tag, url, namespace) {
+			// window[namespace] = window[namespace] || function (x) {
+			// 	console.log(x);
+			// 	(window[namespace].queue = window[namespace].queue || []).push(arguments);
+			// };
+			element = document.createElement(tag);
+			placement = document.getElementsByTagName(tag)[0];
+			// element.async = 1;
+			element.id = "od-sdk";
+			element.setAttribute('data-id', 'NjIyMV8xNTE3MzA2NDM2MTQ5XzQ=');
+			element.src = url;
+			placement.parentNode.insertBefore(element, placement);
+		})(window, document, 'script', 'http://sdk.onedirectdev.in/public/sdk.min.js', 'od')
+	</script>
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
 <style type="text/css">
 	
