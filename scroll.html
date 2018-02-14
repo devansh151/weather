@@ -4,21 +4,18 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width">
-	<script>
-		(function (window, document, tag, url, namespace) {
-			// window[namespace] = window[namespace] || function (x) {
-			// 	console.log(x);
-			// 	(window[namespace].queue = window[namespace].queue || []).push(arguments);
-			// };
-			element = document.createElement(tag);
-			placement = document.getElementsByTagName(tag)[0];
-			// element.async = 1;
-			element.id = "od-sdk";
-			element.setAttribute('data-id', 'NjE4MV8xNTE3NTU1MzYzODM4XzQ=');
-			element.src = url;
-			placement.parentNode.insertBefore(element, placement);
-		})(window, document, 'script', 'http://sdk.onedirectdev.in/public/cors/sdk.js', 'od')
-	</script>
+  
+<script>
+  (function (window, document, tag, url, namespace) {
+    element = document.createElement(tag);
+    placement = document.getElementsByTagName(tag)[0];
+    element.async = 1;
+    element.id = "od-sdk";
+    element.setAttribute('data-id', 'NjIyMV8xNTE4NjExMTkyNzk4XzQ=');
+    element.src = url;
+    placement.parentNode.insertBefore(element, placement);
+  })(window, document, 'script', 'https://s3-ap-southeast-1.amazonaws.com/onedirect/survey/survey_sdk/webinapp-sdk-v1.min.js', 'od')
+</script>
 
 	<style type="text/css">
 		.npsnumber {
